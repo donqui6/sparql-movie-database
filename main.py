@@ -1,8 +1,7 @@
-import json
-from mongodb_connection import get_database
+from MongoDbConnection import *
 from SPARQLWrapper import SPARQLWrapper, JSON
-import os
-from bson.json_util import dumps
+
+
 sparql = SPARQLWrapper(
     "https://query.wikidata.org/sparql"
 )
@@ -53,21 +52,14 @@ LIMIT 3
 )
 
 try:
-    ret = sparql.queryAndConvert()
+    Database = MongoDbConnection()
 
-    dbname = get_database()
-    collection_name = dbname[os.getenv("COLLECTION_MOVIE_NAME")]
-
-    documents = collection_name.find()
-
-    with open("person.json", "w") as f:
-        f.write(dumps(documents))
-
-    with open('person.json', 'w') as file:
-        json.dump(ret, file, indent=4)
-    for r in ret["results"]["bindings"]:
-        print(r)
-
+    Database.setUri()
+    Database.setClient()
+    Database.setDatabase()
+    Database.setCollection(True)
+    Database.dbSendQuery(sparql, True, True)
+    Database.JsonPrint(True)
 
 except Exception as e:
     print(e)
