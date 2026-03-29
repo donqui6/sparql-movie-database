@@ -51,6 +51,30 @@ LIMIT 3
 """
 )
 
+sparql2 = SPARQLWrapper(
+    "https://query.wikidata.org/sparql"
+)
+sparql2.setReturnFormat(JSON)
+
+sparql2.setQuery(
+"""
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX org:  <http://www.w3.org/ns/org#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT DISTINCT ?name
+WHERE {
+  ?p a foaf:Person ;
+     rdfs:label ?name ;
+     org:memberOf ?org .
+
+  FILTER(lang(?name) = "en" || lang(?name) = "")
+}
+ORDER BY ?name
+LIMIT 5
+"""
+)
+
 try:
     Database = MongoDbConnection()
 
@@ -60,6 +84,7 @@ try:
     Database.setCollection(True)
     Database.dbSendQuery(sparql, True, True)
     Database.JsonPrint(True)
+    Database.client.close()
 
 except Exception as e:
     print(e)

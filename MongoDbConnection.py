@@ -1,12 +1,11 @@
 import json
 
-from pymongo.mongo_client import MongoClient
+
 from pymongo.server_api import ServerApi
 import os
 from pymongo import MongoClient, InsertOne
 from dotenv import load_dotenv, dotenv_values
-import bson
-
+from bson import json_util
 
 class MongoDbConnection:
     def __init__(self):
@@ -53,7 +52,7 @@ class MongoDbConnection:
             self.mongodb_collection = self.database[self.collectionName]
             if self.last_query is None:
                 return "dbSendQuery error: no database or client setup."
-        return "dbSendQuery: setup ok."
+        return "Successfully connected to database."
 
     def dbSendQuery(self,sparqlQuery, debug=False, saveLastQuery=False):
         query = sparqlQuery.queryAndConvert()
@@ -70,35 +69,27 @@ class MongoDbConnection:
             for r in query["results"]["bindings"]:
                 print(r)
 
-        bson_data = bson.BSON.encode(query)
-
-        self.mongodb_collection.insert_one(bson_data)
+        self.mongodb_collection.insert_one(query)
 
         if debug:
             print("")
-            print(bson_data)
+            print(self.mongodb_collection)
 
-        self.client.close()
-
-
-    def JsonPrint(self,debug=False, query=None):
-        final_query = query.queryAndConvert()
-
-        self.emergencySetup()
-
+    def JsonPrint(self, debug=False, query=None):
         if query is None:
             final_query = self.last_query
+        else:
+            final_query = query.queryAndConvert()
 
         with open('person.json', 'w') as file:
-            json.dump(final_query, file, indent=4)
+            file.write(json_util.dumps(query, indent=4))
 
         if debug:
-            for r in query["results"]["bindings"]:
+            for r in final_query["results"]["bindings"]:
                 print(r)
 
 
 
 
-
 if __name__ == "__main__":
-    print("launched: MongoDbConnection")
+    print("launched: MongoDbConnection class")
