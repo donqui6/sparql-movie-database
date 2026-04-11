@@ -1,0 +1,1297 @@
+[
+  {
+    "actor_name": "Tom Hanks",
+    "actor_qid": "Q2263",
+    "films": [
+      {
+        "qid": "Q106428",
+        "title": "Apollo 13",
+        "release_dates": [
+          "1995"
+        ],
+        "genres": [
+          "film ou téléfilm catastrophe",
+          "docudrame",
+          "drame",
+          "film de survie",
+          "film ou téléfilm d'aventure",
+          "film ou téléfilm historique"
+        ],
+        "directors": [
+          {
+            "qid": "Q103646",
+            "name": "Ron Howard",
+            "birth_date": "1954-03-01"
+          }
+        ],
+        "awards": [
+          {
+            "qid": "Q518675",
+            "label": "Screen Actors Guild Award de la meilleure distribution"
+          },
+          {
+            "qid": "Q281939",
+            "label": "Oscar du meilleur montage"
+          },
+          {
+            "qid": "Q787127",
+            "label": "British Academy Film Award des meilleurs effets visuels"
+          }
+        ],
+        "cast": [
+          {
+            "qid": "Q198684",
+            "name": "Wayne Duvall",
+            "birth_date": "1958-05-29",
+            "roles": []
+          },
+          {
+            "qid": "Q182946",
+            "name": "Joe Spano",
+            "birth_date": "1946-07-07",
+            "roles": [
+              "Christopher C. Kraft",
+              "Christopher Kraft"
+            ]
+          },
+          {
+            "qid": "Q110374",
+            "name": "Bill Paxton",
+            "birth_date": "1955-05-17",
+            "roles": [
+              "Fred Haise"
+            ]
+          },
+          {
+            "qid": "Q359873",
+            "name": "Andy Milder",
+            "birth_date": "1969-08-16",
+            "roles": []
+          },
+          {
+            "qid": "Q1101612",
+            "name": "Clint Howard",
+            "birth_date": "1959-04-20",
+            "roles": [
+              "Seymour Liebergot"
+            ]
+          },
+          {
+            "qid": "Q318292",
+            "name": "Roger Corman",
+            "birth_date": "1926-04-05",
+            "roles": []
+          },
+          {
+            "qid": "Q2263",
+            "name": "Tom Hanks",
+            "birth_date": "1956-07-09",
+            "roles": [
+              "James Lovell",
+              "Jim Lovell"
+            ]
+          },
+          {
+            "qid": "Q517602",
+            "name": "Mary Kate Schellhardt",
+            "birth_date": "1978-11-01",
+            "roles": [
+              "Barbara Lovell"
+            ]
+          },
+          {
+            "qid": "Q104791",
+            "name": "Ed Harris",
+            "birth_date": "1950-11-28",
+            "roles": [
+              "Eugene Kranz",
+              "Gene Kranz"
+            ]
+          },
+          {
+            "qid": "Q21728021",
+            "name": "Ben Marley",
+            "birth_date": "",
+            "roles": [
+              "John Young"
+            ]
+          },
+          {
+            "qid": "Q716247",
+            "name": "Max Grodénchik",
+            "birth_date": "1952-11-12",
+            "roles": []
+          },
+          {
+            "qid": "Q1337568",
+            "name": "Emily Ann Lloyd",
+            "birth_date": "1984-03-27",
+            "roles": [
+              "Susan Lovell"
+            ]
+          },
+          {
+            "qid": "Q330801",
+            "name": "David Andrews",
+            "birth_date": "1952-11-02",
+            "roles": [
+              "Charles Conrad"
+            ]
+          }
+        ]
+      },
+      {
+        "qid": "Q134773",
+        "title": "",
+        "release_dates": [],
+        "genres": [],
+        "directors": [],
+        "awards": [],
+        "cast": [
+          {
+            "qid": "Q457991",
+            "name": "Siobhan Fallon Hogan",
+            "birth_date": "1961-05-13",
+            "roles": []
+          },
+          {
+            "qid": "Q2825721",
+            "name": "Afemo Omilami",
+            "birth_date": "1950-12-13",
+            "roles": []
+          },
+          {
+            "qid": "Q6212499",
+            "name": "Joe Stefanelli",
+            "birth_date": "1960-09-11",
+            "roles": [
+              "John Lennon"
+            ]
+          },
+          {
+            "qid": "Q2386386",
+            "name": "Jacqueline Lovell",
+            "birth_date": "1974-12-09",
+            "roles": []
+          },
+          {
+            "qid": "Q26859187",
+            "name": "Valentine",
+            "birth_date": "",
+            "roles": []
+          },
+          {
+            "qid": "Q26857961",
+            "name": "George Kelly",
+            "birth_date": "",
+            "roles": []
+          },
+          {
+            "qid": "Q26858807",
+            "name": "Scott Oliver",
+            "birth_date": "",
+            "roles": []
+          },
+          {
+            "qid": "Q26859059",
+            "name": "Jay Ross",
+            "birth_date": "",
+            "roles": []
+          },
+          {
+            "qid": "Q1502946",
+            "name": "Geoffrey Blake",
+            "birth_date": "1962-08-20",
+            "roles": []
+          },
+          {
+            "qid": "Q26859543",
+            "name": "Joe Washington",
+            "birth_date": "",
+            "roles": []
+          },
+          {
+            "qid": "Q26858814",
+            "name": "John William Galt",
+            "birth_date": "1940-04-04",
+            "roles": [
+              "Lyndon B. Johnson"
+            ]
+          },
+          {
+            "qid": "Q26857960",
+            "name": "Harold Herthum",
+            "birth_date": "1929-04-11",
+            "roles": []
+          },
+          {
+            "qid": "Q4962360",
+            "name": "Brett Rice",
+            "birth_date": "1954-04-20",
+            "roles": []
+          },
+          {
+            "qid": "Q26858567",
+            "name": "Bruce Lucvia",
+            "birth_date": "",
+            "roles": []
+          },
+          {
+            "qid": "Q26858706",
+            "name": "Calvin Gadsden",
+            "birth_date": "",
+            "roles": []
+          },
+          {
+            "qid": "Q26858619",
+            "name": "Michael Flannery",
+            "birth_date": "",
+            "roles": []
+          },
+          {
+            "qid": "Q26858677",
+            "name": "Paulie DiCocco",
+            "birth_date": "",
+            "roles": []
+          },
+          {
+            "qid": "Q26858692",
+            "name": "Russ Wilson",
+            "birth_date": "",
+            "roles": []
+          },
+          {
+            "qid": "Q26858734",
+            "name": "William Acy \"Billy\" Roberson Jr",
+            "birth_date": "",
+            "roles": []
+          }
+        ]
+      },
+      {
+        "qid": "Q165817",
+        "title": "Saving Private Ryan",
+        "release_dates": [
+          "1998"
+        ],
+        "genres": [
+          "film et téléfilm de guerre",
+          "drame",
+          "film et téléfilm d'action"
+        ],
+        "directors": [
+          {
+            "qid": "Q8877",
+            "name": "Steven Spielberg",
+            "birth_date": "1946-12-18"
+          }
+        ],
+        "awards": [
+          {
+            "qid": "Q131520",
+            "label": "Oscar de la meilleure photographie"
+          },
+          {
+            "qid": "Q103360",
+            "label": "Oscar du meilleur réalisateur"
+          },
+          {
+            "qid": "Q488645",
+            "label": "Oscar du meilleur montage de son"
+          },
+          {
+            "qid": "Q281939",
+            "label": "Oscar du meilleur montage"
+          },
+          {
+            "qid": "Q830079",
+            "label": "Oscar du meilleur mixage de son"
+          }
+        ],
+        "cast": [
+          {
+            "qid": "Q2263",
+            "name": "Tom Hanks",
+            "birth_date": "1956-07-09",
+            "roles": []
+          },
+          {
+            "qid": "Q349852",
+            "name": "Tom Sizemore",
+            "birth_date": "1961-11-29",
+            "roles": []
+          },
+          {
+            "qid": "Q105607",
+            "name": "Joerg Stadler",
+            "birth_date": "",
+            "roles": []
+          },
+          {
+            "qid": "Q312337",
+            "name": "Jeremy Davies",
+            "birth_date": "1969-10-08",
+            "roles": []
+          },
+          {
+            "qid": "Q725027",
+            "name": "Dylan Bruno",
+            "birth_date": "1972-09-06",
+            "roles": []
+          },
+          {
+            "qid": "Q208649",
+            "name": "Paul Giamatti",
+            "birth_date": "1967-06-06",
+            "roles": []
+          },
+          {
+            "qid": "Q23547",
+            "name": "Bryan Cranston",
+            "birth_date": "1956-03-07",
+            "roles": []
+          },
+          {
+            "qid": "Q4739567",
+            "name": "Amanda Boxer",
+            "birth_date": "1948-10-01",
+            "roles": []
+          },
+          {
+            "qid": "Q352935",
+            "name": "Dennis Farina",
+            "birth_date": "1944-02-29",
+            "roles": []
+          },
+          {
+            "qid": "Q1395333",
+            "name": "Harve Presnell",
+            "birth_date": "1933-09-14",
+            "roles": [
+              "George Marshall"
+            ]
+          },
+          {
+            "qid": "Q1132632",
+            "name": "Corey Johnson",
+            "birth_date": "1961-05-17",
+            "roles": []
+          },
+          {
+            "qid": "Q12035731",
+            "name": "Martin Hub",
+            "birth_date": "1964-03-13",
+            "roles": []
+          },
+          {
+            "qid": "Q3022086",
+            "name": "Demetri Goritsas",
+            "birth_date": "1971-08-24",
+            "roles": []
+          },
+          {
+            "qid": "Q17021160",
+            "name": "Glenn Wrage",
+            "birth_date": "1959-05-25",
+            "roles": []
+          },
+          {
+            "qid": "Q621099",
+            "name": "Ryan Hurst",
+            "birth_date": "1976-06-19",
+            "roles": []
+          },
+          {
+            "qid": "Q460253",
+            "name": "Kathleen Byron",
+            "birth_date": "1921-01-11",
+            "roles": []
+          },
+          {
+            "qid": "Q507322",
+            "name": "Andrew Scott",
+            "birth_date": "1976-10-21",
+            "roles": []
+          },
+          {
+            "qid": "Q224081",
+            "name": "Giovanni Ribisi",
+            "birth_date": "1974-12-17",
+            "roles": []
+          },
+          {
+            "qid": "Q175535",
+            "name": "Matt Damon",
+            "birth_date": "1970-10-08",
+            "roles": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "actor_name": "Meryl Streep",
+    "actor_qid": "Q873",
+    "films": [
+      {
+        "qid": "Q116905",
+        "title": "Lemony Snicket's A Series of Unfortunate Events",
+        "release_dates": [
+          "2004",
+          "2005"
+        ],
+        "genres": [
+          "drame",
+          "comédie",
+          "film ou téléfilm familial",
+          "film ou téléfilm d'aventure",
+          "film pour adolescents",
+          "film et téléfilm de fantasy"
+        ],
+        "directors": [
+          {
+            "qid": "Q725449",
+            "name": "Brad Silberling",
+            "birth_date": "1963-09-08"
+          }
+        ],
+        "awards": [
+          {
+            "qid": "Q487136",
+            "label": "Oscar du meilleur maquillage"
+          },
+          {
+            "qid": "Q17011060",
+            "label": "Teen Choice Award for Best Villain"
+          },
+          {
+            "qid": "Q4824167",
+            "label": "Australian Film Institute International Award for Best Actress"
+          }
+        ],
+        "cast": [
+          {
+            "qid": "Q40504",
+            "name": "Jim Carrey",
+            "birth_date": "1962-01-17",
+            "roles": [
+              "Comte Olaf",
+              "Count Olaf"
+            ]
+          },
+          {
+            "qid": "Q492327",
+            "name": "Cedric the Entertainer",
+            "birth_date": "1964-04-24",
+            "roles": []
+          },
+          {
+            "qid": "Q233365",
+            "name": "Catherine O'Hara",
+            "birth_date": "1954-03-04",
+            "roles": [
+              "Justice Strauss"
+            ]
+          },
+          {
+            "qid": "Q288620",
+            "name": "Emily Browning",
+            "birth_date": "1988-12-07",
+            "roles": [
+              "Violet Baudelaire",
+              "Violette Baudelaire"
+            ]
+          },
+          {
+            "qid": "Q298838",
+            "name": "Billy Connolly",
+            "birth_date": "1942-11-24",
+            "roles": [
+              "Montgomery Montgomery",
+              "Monty Montgomery"
+            ]
+          },
+          {
+            "qid": "Q873",
+            "name": "Meryl Streep",
+            "birth_date": "1949-06-22",
+            "roles": [
+              "Josephine Anwhistle"
+            ]
+          },
+          {
+            "qid": "Q72867",
+            "name": "Craig Ferguson",
+            "birth_date": "1962-05-17",
+            "roles": []
+          },
+          {
+            "qid": "Q42930",
+            "name": "Dustin Hoffman",
+            "birth_date": "1937-08-08",
+            "roles": []
+          },
+          {
+            "qid": "Q287824",
+            "name": "Timothy Spall",
+            "birth_date": "1957-02-27",
+            "roles": [
+              "Arthur Poe"
+            ]
+          },
+          {
+            "qid": "Q212224",
+            "name": "Liam Aiken",
+            "birth_date": "1990-01-07",
+            "roles": [
+              "Klaus Baudelaire"
+            ]
+          },
+          {
+            "qid": "Q221464",
+            "name": "Gilbert Gottfried",
+            "birth_date": "1955-02-28",
+            "roles": []
+          },
+          {
+            "qid": "Q526201",
+            "name": "Deborah Theaker",
+            "birth_date": "1964-04-06",
+            "roles": []
+          },
+          {
+            "qid": "Q228852",
+            "name": "Jane Lynch",
+            "birth_date": "1960-07-14",
+            "roles": []
+          },
+          {
+            "qid": "Q230278",
+            "name": "Jennifer Coolidge",
+            "birth_date": "1961-08-28",
+            "roles": []
+          },
+          {
+            "qid": "Q436360",
+            "name": "Jane Adams",
+            "birth_date": "1965-04-01",
+            "roles": []
+          }
+        ]
+      },
+      {
+        "qid": "Q157044",
+        "title": "The Hours",
+        "release_dates": [
+          "2002",
+          "2003"
+        ],
+        "genres": [
+          "film LGBT",
+          "drame"
+        ],
+        "directors": [
+          {
+            "qid": "Q313506",
+            "name": "Stephen Daldry",
+            "birth_date": "1961-05-02"
+          }
+        ],
+        "awards": [
+          {
+            "qid": "Q103618",
+            "label": "Oscar de la meilleure actrice"
+          },
+          {
+            "qid": "Q17748520",
+            "label": "prix Amanda du meilleur film étranger"
+          },
+          {
+            "qid": "Q1789102",
+            "label": "National Board of Review Award du meilleur film"
+          },
+          {
+            "qid": "Q19573074",
+            "label": "Silver nugget for the best foreign film"
+          },
+          {
+            "qid": "Q1966965",
+            "label": "National Board of Review: Top Ten Films"
+          }
+        ],
+        "cast": [
+          {
+            "qid": "Q257317",
+            "name": "Margo Martindale",
+            "birth_date": "1951-07-18",
+            "roles": []
+          },
+          {
+            "qid": "Q707538",
+            "name": "Stephen Dillane",
+            "birth_date": "1957-03-27",
+            "roles": []
+          },
+          {
+            "qid": "Q360046",
+            "name": "Christian Coulson",
+            "birth_date": "1978-10-03",
+            "roles": []
+          },
+          {
+            "qid": "Q873",
+            "name": "Meryl Streep",
+            "birth_date": "1949-06-22",
+            "roles": []
+          },
+          {
+            "qid": "Q24357",
+            "name": "Lyndsey Marshal",
+            "birth_date": "1978-06-16",
+            "roles": []
+          },
+          {
+            "qid": "Q53680",
+            "name": "Jeff Daniels",
+            "birth_date": "1955-02-19",
+            "roles": []
+          },
+          {
+            "qid": "Q269835",
+            "name": "Eileen Atkins",
+            "birth_date": "1934-06-15",
+            "roles": []
+          },
+          {
+            "qid": "Q6829578",
+            "name": "Michael Culkin",
+            "birth_date": "2000-01-01",
+            "roles": []
+          },
+          {
+            "qid": "Q501750",
+            "name": "Colin Stinton",
+            "birth_date": "1947-03-10",
+            "roles": []
+          },
+          {
+            "qid": "Q3805643",
+            "name": "Jack Rovello",
+            "birth_date": "1994-01-01",
+            "roles": []
+          },
+          {
+            "qid": "Q223110",
+            "name": "John C. Reilly",
+            "birth_date": "1965-05-24",
+            "roles": []
+          },
+          {
+            "qid": "Q3134239",
+            "name": "Linda Bassett",
+            "birth_date": "1950-02-04",
+            "roles": []
+          },
+          {
+            "qid": "Q229291",
+            "name": "Toni Collette",
+            "birth_date": "1972-11-01",
+            "roles": []
+          },
+          {
+            "qid": "Q229487",
+            "name": "Allison Janney",
+            "birth_date": "1959-11-19",
+            "roles": []
+          },
+          {
+            "qid": "Q229241",
+            "name": "Miranda Richardson",
+            "birth_date": "1958-03-03",
+            "roles": []
+          },
+          {
+            "qid": "Q867813",
+            "name": "Claire Danes",
+            "birth_date": "1979-04-12",
+            "roles": []
+          },
+          {
+            "qid": "Q37459",
+            "name": "Nicole Kidman",
+            "birth_date": "1967-06-20",
+            "roles": []
+          },
+          {
+            "qid": "Q80405",
+            "name": "Julianne Moore",
+            "birth_date": "1960-12-03",
+            "roles": []
+          },
+          {
+            "qid": "Q104791",
+            "name": "Ed Harris",
+            "birth_date": "1950-11-28",
+            "roles": []
+          }
+        ]
+      },
+      {
+        "qid": "Q165627",
+        "title": "Sophie's Choice",
+        "release_dates": [
+          "1982",
+          "1983"
+        ],
+        "genres": [
+          "drame",
+          "film à flash-back"
+        ],
+        "directors": [
+          {
+            "qid": "Q51519",
+            "name": "Alan J. Pakula",
+            "birth_date": "1928-04-07"
+          }
+        ],
+        "awards": [
+          {
+            "qid": "Q103618",
+            "label": "Oscar de la meilleure actrice"
+          },
+          {
+            "qid": "Q1268927",
+            "label": "National Society of Film Critics Award de la meilleure actrice"
+          },
+          {
+            "qid": "Q1966965",
+            "label": "National Board of Review: Top Ten Films"
+          },
+          {
+            "qid": "Q463085",
+            "label": "Golden Globe de la meilleure actrice dans un film dramatique"
+          }
+        ],
+        "cast": [
+          {
+            "qid": "Q961297",
+            "name": "Josh Mostel",
+            "birth_date": "1946-12-21",
+            "roles": []
+          },
+          {
+            "qid": "Q18745573",
+            "name": "Ulli Fessl",
+            "birth_date": "1942-01-05",
+            "roles": []
+          },
+          {
+            "qid": "Q873",
+            "name": "Meryl Streep",
+            "birth_date": "1949-06-22",
+            "roles": []
+          },
+          {
+            "qid": "Q89368",
+            "name": "Karlheinz Hackl",
+            "birth_date": "1949-05-16",
+            "roles": []
+          },
+          {
+            "qid": "Q273075",
+            "name": "Robin Bartlett",
+            "birth_date": "1951-04-22",
+            "roles": []
+          },
+          {
+            "qid": "Q105817",
+            "name": "Kevin Kline",
+            "birth_date": "1947-10-24",
+            "roles": []
+          },
+          {
+            "qid": "Q3059567",
+            "name": "Eugene Lipinski",
+            "birth_date": "1956-11-05",
+            "roles": []
+          },
+          {
+            "qid": "Q90847",
+            "name": "Günther Maria Halmer",
+            "birth_date": "1943-01-05",
+            "roles": []
+          },
+          {
+            "qid": "Q299309",
+            "name": "Peter MacNicol",
+            "birth_date": "1954-04-10",
+            "roles": []
+          },
+          {
+            "qid": "Q6255748",
+            "name": "John Rothman",
+            "birth_date": "1949-06-03",
+            "roles": []
+          },
+          {
+            "qid": "Q3937230",
+            "name": "Rita Karin",
+            "birth_date": "1919-10-24",
+            "roles": []
+          },
+          {
+            "qid": "Q550928",
+            "name": "Josef Sommer",
+            "birth_date": "1934-06-26",
+            "roles": []
+          },
+          {
+            "qid": "Q69640",
+            "name": "Katharina Thalbach",
+            "birth_date": "1954-01-19",
+            "roles": []
+          },
+          {
+            "qid": "Q2199939",
+            "name": "David Wohl",
+            "birth_date": "1953-09-22",
+            "roles": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "actor_name": "Leonardo DiCaprio",
+    "actor_qid": "Q38111",
+    "films": [
+      {
+        "qid": "Q74958",
+        "title": "Blood Diamond",
+        "release_dates": [
+          "2006",
+          "2007"
+        ],
+        "genres": [
+          "film ou téléfilm d'aventure",
+          "thriller",
+          "drame",
+          "film et téléfilm de guerre",
+          "film et téléfilm d'action"
+        ],
+        "directors": [
+          {
+            "qid": "Q314142",
+            "name": "Edward Zwick",
+            "birth_date": "1952-10-08"
+          }
+        ],
+        "awards": [
+          {
+            "qid": "Q1966965",
+            "label": "National Board of Review: Top Ten Films"
+          }
+        ],
+        "cast": [
+          {
+            "qid": "Q449035",
+            "name": "Winston Ntshona",
+            "birth_date": "1941-10-06",
+            "roles": []
+          },
+          {
+            "qid": "Q1390607",
+            "name": "Marius Weyers",
+            "birth_date": "1945-02-03",
+            "roles": []
+          },
+          {
+            "qid": "Q724227",
+            "name": "Jimi Mistry",
+            "birth_date": "1973-01-01",
+            "roles": []
+          },
+          {
+            "qid": "Q435434",
+            "name": "Stephen Collins",
+            "birth_date": "1947-10-01",
+            "roles": []
+          },
+          {
+            "qid": "Q4817144",
+            "name": "Ato Essandoh",
+            "birth_date": "1972-07-29",
+            "roles": []
+          },
+          {
+            "qid": "Q11853951",
+            "name": "Basil Wallace",
+            "birth_date": "1951-01-15",
+            "roles": []
+          },
+          {
+            "qid": "Q209107",
+            "name": "Clare Holman",
+            "birth_date": "1964-01-12",
+            "roles": []
+          },
+          {
+            "qid": "Q108885956",
+            "name": "Kagiso Kuypers",
+            "birth_date": "1992-01-01",
+            "roles": []
+          },
+          {
+            "qid": "Q3018042",
+            "name": "David Harewood",
+            "birth_date": "1965-12-08",
+            "roles": []
+          },
+          {
+            "qid": "Q311314",
+            "name": "Sam Elliott",
+            "birth_date": "1944-08-09",
+            "roles": []
+          },
+          {
+            "qid": "Q298276",
+            "name": "Michael Sheen",
+            "birth_date": "1969-02-05",
+            "roles": []
+          },
+          {
+            "qid": "Q3345980",
+            "name": "Ntare Mwine",
+            "birth_date": "1967-01-01",
+            "roles": []
+          },
+          {
+            "qid": "Q297739",
+            "name": "Arnold Vosloo",
+            "birth_date": "1962-06-16",
+            "roles": []
+          },
+          {
+            "qid": "Q298682",
+            "name": "Djimon Hounsou",
+            "birth_date": "1964-04-24",
+            "roles": []
+          },
+          {
+            "qid": "Q5527746",
+            "name": "Gaurav Chopra",
+            "birth_date": "1979-04-04",
+            "roles": []
+          },
+          {
+            "qid": "Q103343",
+            "name": "Jennifer Connelly",
+            "birth_date": "1970-12-12",
+            "roles": []
+          },
+          {
+            "qid": "Q38111",
+            "name": "Leonardo DiCaprio",
+            "birth_date": "1974-11-11",
+            "roles": []
+          }
+        ]
+      },
+      {
+        "qid": "Q154581",
+        "title": "Gangs of New York",
+        "release_dates": [
+          "2002",
+          "2003"
+        ],
+        "genres": [
+          "film policier dramatique",
+          "film ou téléfilm épique",
+          "film ou téléfilm à énigme",
+          "film de gangsters",
+          "film ou téléfilm criminel",
+          "drame d'époque",
+          "film et téléfilm d'action",
+          "historical drama film",
+          "drame",
+          "film ou téléfilm historique"
+        ],
+        "directors": [
+          {
+            "qid": "Q41148",
+            "name": "Martin Scorsese",
+            "birth_date": "1942-11-17"
+          }
+        ],
+        "awards": [
+          {
+            "qid": "Q1966965",
+            "label": "National Board of Review: Top Ten Films"
+          }
+        ],
+        "cast": [
+          {
+            "qid": "Q442547",
+            "name": "Stephen Graham",
+            "birth_date": "1973-08-03",
+            "roles": []
+          },
+          {
+            "qid": "Q113949",
+            "name": "Gary Lewis",
+            "birth_date": "1958-11-30",
+            "roles": []
+          },
+          {
+            "qid": "Q64577",
+            "name": "Peter Berling",
+            "birth_date": "1934-03-20",
+            "roles": []
+          },
+          {
+            "qid": "Q455280",
+            "name": "Barbara Bouchet",
+            "birth_date": "1943-08-15",
+            "roles": []
+          },
+          {
+            "qid": "Q206659",
+            "name": "Brendan Gleeson",
+            "birth_date": "1955-03-29",
+            "roles": []
+          },
+          {
+            "qid": "Q1450781",
+            "name": "Massimo Vanni",
+            "birth_date": "1946-07-08",
+            "roles": []
+          },
+          {
+            "qid": "Q4762532",
+            "name": "Angela Pleasence",
+            "birth_date": "1941-09-30",
+            "roles": []
+          },
+          {
+            "qid": "Q41148",
+            "name": "Martin Scorsese",
+            "birth_date": "1942-11-17",
+            "roles": []
+          },
+          {
+            "qid": "Q44380",
+            "name": "Cameron Diaz",
+            "birth_date": "1972-08-30",
+            "roles": []
+          },
+          {
+            "qid": "Q370632",
+            "name": "Giovanni Lombardo Radice",
+            "birth_date": "1954-09-23",
+            "roles": []
+          },
+          {
+            "qid": "Q3752106",
+            "name": "Seán McGinley",
+            "birth_date": "1956-01-01",
+            "roles": []
+          },
+          {
+            "qid": "Q438908",
+            "name": "Cara Seymour",
+            "birth_date": "1964-01-06",
+            "roles": [
+              "Hell-Cat Maggie"
+            ]
+          },
+          {
+            "qid": "Q8564494",
+            "name": "Ford Kiernan",
+            "birth_date": "1962-01-10",
+            "roles": []
+          },
+          {
+            "qid": "Q212416",
+            "name": "Michael Byrne",
+            "birth_date": "1943-11-07",
+            "roles": [
+              "Horace Greeley"
+            ]
+          },
+          {
+            "qid": "Q7839105",
+            "name": "Trevor Cooper",
+            "birth_date": "1953-09-21",
+            "roles": []
+          },
+          {
+            "qid": "Q45647",
+            "name": "Eddie Marsan",
+            "birth_date": "1968-06-09",
+            "roles": []
+          },
+          {
+            "qid": "Q740202",
+            "name": "Roger Ashton-Griffiths",
+            "birth_date": "1957-01-19",
+            "roles": [
+              "P. T. Barnum"
+            ]
+          },
+          {
+            "qid": "Q3953566",
+            "name": "Sean Gilder",
+            "birth_date": "1964-03-01",
+            "roles": []
+          }
+        ]
+      },
+      {
+        "qid": "Q172975",
+        "title": "The Departed",
+        "release_dates": [
+          "2006"
+        ],
+        "genres": [
+          "drame",
+          "film policier dramatique",
+          "thriller policier",
+          "film à suspense",
+          "thriller",
+          "néo-noir",
+          "film ou téléfilm épique",
+          "film ou téléfilm criminel",
+          "film de gangsters",
+          "film ou téléfilm à énigme"
+        ],
+        "directors": [
+          {
+            "qid": "Q41148",
+            "name": "Martin Scorsese",
+            "birth_date": "1942-11-17"
+          }
+        ],
+        "awards": [
+          {
+            "qid": "Q102427",
+            "label": "Oscar du meilleur film"
+          },
+          {
+            "qid": "Q103360",
+            "label": "Oscar du meilleur réalisateur"
+          }
+        ],
+        "cast": [
+          {
+            "qid": "Q693301",
+            "name": "Mark Rolston",
+            "birth_date": "1956-12-07",
+            "roles": []
+          },
+          {
+            "qid": "Q708801",
+            "name": "David O'Hara",
+            "birth_date": "1965-07-09",
+            "roles": []
+          },
+          {
+            "qid": "Q264840",
+            "name": "Vera Farmiga",
+            "birth_date": "1973-08-06",
+            "roles": []
+          },
+          {
+            "qid": "Q3182044",
+            "name": "John McConnell",
+            "birth_date": "1958-11-13",
+            "roles": []
+          },
+          {
+            "qid": "Q863224",
+            "name": "Billy Smith",
+            "birth_date": "1950-12-12",
+            "roles": []
+          },
+          {
+            "qid": "Q39792",
+            "name": "Jack Nicholson",
+            "birth_date": "1937-04-22",
+            "roles": []
+          },
+          {
+            "qid": "Q164119",
+            "name": "Mark Wahlberg",
+            "birth_date": "1971-06-05",
+            "roles": []
+          },
+          {
+            "qid": "Q24699898",
+            "name": "John Cenatiempo",
+            "birth_date": "1963-03-05",
+            "roles": []
+          },
+          {
+            "qid": "Q170572",
+            "name": "Alec Baldwin",
+            "birth_date": "1958-04-03",
+            "roles": []
+          },
+          {
+            "qid": "Q175535",
+            "name": "Matt Damon",
+            "birth_date": "1970-10-08",
+            "roles": []
+          },
+          {
+            "qid": "Q313918",
+            "name": "Anthony Anderson",
+            "birth_date": "1970-08-15",
+            "roles": []
+          },
+          {
+            "qid": "Q310932",
+            "name": "Ray Winstone",
+            "birth_date": "1957-02-19",
+            "roles": []
+          },
+          {
+            "qid": "Q2276547",
+            "name": "Robert Wahlberg",
+            "birth_date": "1967-12-18",
+            "roles": []
+          },
+          {
+            "qid": "Q184572",
+            "name": "Martin Sheen",
+            "birth_date": "1940-08-03",
+            "roles": []
+          },
+          {
+            "qid": "Q275817",
+            "name": "Kristen Dalton",
+            "birth_date": "1973-02-14",
+            "roles": []
+          },
+          {
+            "qid": "Q451974",
+            "name": "James Badge Dale",
+            "birth_date": "1978-05-01",
+            "roles": []
+          },
+          {
+            "qid": "Q1334725",
+            "name": "Kevin Corrigan",
+            "birth_date": "1969-03-27",
+            "roles": []
+          },
+          {
+            "qid": "Q38111",
+            "name": "Leonardo DiCaprio",
+            "birth_date": "1974-11-11",
+            "roles": []
+          }
+        ]
+      }
+    ]
+  }
+]
