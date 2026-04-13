@@ -1,3 +1,5 @@
+import os
+
 import requests
 import json
 import time
@@ -54,7 +56,8 @@ def search_actor_qid(name: str) -> str | None:
     params = {
         "action": "wbsearchentities",
         "search": name,
-        "language": "en",
+        "language": "fr",  # priorité au français
+        "language_fallback": 1,  # fallback vers l'anglais si absent
         "type": "item",
         "limit": 10,
         "format": "json",
@@ -90,13 +93,13 @@ def resolve_actors(names: list[str]) -> dict[str, str]:
 
 
 # ---------------------------------------------------------------------------
-# 2a. Requête 1 — films primés d'un acteur (minimaliste, ~1 s)
+# 2a. Requête 1 — films primés d'un acteur
 # ---------------------------------------------------------------------------
 
 def fetch_awarded_films(actor_qid: str, max_films: int = 3) -> list[str]:
     """
     Retourne jusqu'à `max_films` QIDs de films ayant reçu un prix
-    pour l'acteur donné.
+    pour l'acteur donné. ORDER BY pour des résultats déterministes.
     """
     rows = sparql_query(f"""
 SELECT DISTINCT ?movie WHERE {{
@@ -112,191 +115,245 @@ SELECT DISTINCT ?movie WHERE {{
   }}
   MINUS {{ ?movie wdt:P31/wdt:P279? wd:Q24856 }}
 }}
+ORDER BY ?movie
 LIMIT {max_films}
 """)
     return [qid(val(r, "movie")) for r in rows if val(r, "movie")]
 
 
 # ---------------------------------------------------------------------------
-# 2b. Requête 2 — métadonnées d'un film (titre, année, genres, réalisateur, prix)
+# 2b. Requête 2 — métadonnées d'un film
 # ---------------------------------------------------------------------------
 
 def fetch_film_metadata(movie_qid: str) -> dict:
     rows = sparql_query(f"""
-    SELECT DISTINCT
-      ?movieLabel ?releaseDate
-      ?genre ?genreLabel
-      ?director ?directorLabel ?directorBirth
-      ?trophy ?trophyLabel
-    WHERE {{
-      # Ajouter cette ligne :
-      wd:{movie_qid} rdfs:label ?movieLabel .
-      FILTER(LANG(?movieLabel) = "fr" || LANG(?movieLabel) = "en")
+SELECT DISTINCT
+  ?movieLabel ?releaseDate
+  ?genre ?genreLabel
+  ?director ?directorLabel ?directorBirth
+  ?trophy ?trophyLabel
+WHERE {{
+  wd:{movie_qid} rdfs:label ?movieLabel .
+  FILTER(LANG(?movieLabel) = "fr" || LANG(?movieLabel) = "en")
 
-      OPTIONAL {{ wd:{movie_qid} wdt:P577 ?releaseDate }}
-      OPTIONAL {{ wd:{movie_qid} wdt:P136 ?genre }}
-      OPTIONAL {{
-        wd:{movie_qid} wdt:P57 ?director .
-        OPTIONAL {{ ?director wdt:P569 ?directorBirth }}
-      }}
-      OPTIONAL {{ wd:{movie_qid} wdt:P166 ?trophy }}
-      SERVICE wikibase:label {{ bd:serviceParam wikibase:language "fr,en". }}
-    }}
-    LIMIT 50
-    """)
+  OPTIONAL {{ wd:{movie_qid} wdt:P577 ?releaseDate }}
+  OPTIONAL {{ wd:{movie_qid} wdt:P136 ?genre }}
+  OPTIONAL {{
+    wd:{movie_qid} wdt:P57 ?director .
+    OPTIONAL {{ ?director wdt:P569 ?directorBirth }}
+  }}
+  OPTIONAL {{ wd:{movie_qid} wdt:P166 ?trophy }}
+  SERVICE wikibase:label {{ bd:serviceParam wikibase:language "fr,en". }}
+}}
+LIMIT 50
+""")
 
-    film = {
-        "qid": movie_qid,
-        "title": "",
-        "release_dates": set(),
-        "genres": {},
-        "directors": {},
-        "awards": [],
-        "cast": [],
-    }
+    # Accumulation temporaire pour dédoublonner
+    _years = set()
+    _genres = {}  # wikidata_id → label
+    _directors = {}  # wikidata_id → dict (on garde le premier réalisateur)
+    _awards = []
+
+    title = ""
 
     for r in rows:
-        if not film["title"]:
-            film["title"] = val(r, "movieLabel")
+        if not title:
+            title = val(r, "movieLabel")
         if rd := val(r, "releaseDate"):
-            film["release_dates"].add(rd[:4])
+            _years.add(rd[:4])
         if g := qid(val(r, "genre")):
-            film["genres"][g] = val(r, "genreLabel") or g
+            _genres[g] = val(r, "genreLabel") or g
         if d := qid(val(r, "director")):
-            film["directors"][d] = {
-                "qid": d,
+            _directors[d] = {
+                "wikidata_id": d,
                 "name": val(r, "directorLabel"),
                 "birth_date": val(r, "directorBirth")[:10] if val(r, "directorBirth") else "",
             }
         if t := qid(val(r, "trophy")):
-            entry = {"qid": t, "label": val(r, "trophyLabel")}
-            if entry not in film["awards"]:
-                film["awards"].append(entry)
+            entry = {"wikidata_id": t, "label": val(r, "trophyLabel")}
+            if entry not in _awards:
+                _awards.append(entry)
 
-    return film
+    # On retient l'année de sortie la plus ancienne (première sortie)
+    year = int(min(_years)) if _years else None
+
+    # Le réalisateur principal est le premier trouvé
+    director = list(_directors.values())[0] if _directors else None
+
+    return {
+        "wikidata_id": movie_qid,
+        "title": title,
+        "year": year,
+        "genres": list(_genres.values()),
+        "director": director,
+        "awards": _awards,
+        "cast": [],  # rempli juste après par fetch_film_cast
+    }
 
 
 # ---------------------------------------------------------------------------
-# 2c. Requête 3 — casting d'un film (séparée pour rester légère)
+# 2c. Requête 3 — casting d'un film
 # ---------------------------------------------------------------------------
 
 def fetch_film_cast(movie_qid: str) -> list[dict]:
     """
     Retourne le casting du film (max 20 membres).
-    Séparé de fetch_film_metadata pour éviter l'explosion combinatoire.
+    Chaque membre possède : wikidata_id, name, birth_date, role.
     """
     rows = sparql_query(f"""
-    SELECT DISTINCT ?member ?memberLabel ?memberBirth ?roleLabel WHERE {{
-        wd:{movie_qid} p:P161 ?castStmt .
-        ?castStmt ps:P161 ?member .
-        OPTIONAL {{ ?member wdt:P569 ?memberBirth }}
-        OPTIONAL {{
-            ?castStmt pq:P453 ?role .
-            ?role rdfs:label ?roleLabel .
-            FILTER(lang(?roleLabel) = "fr" || lang(?roleLabel) = "en")
-        }}
-        SERVICE wikibase:label {{ bd:serviceParam wikibase:language "fr,en". }}
-    }}
-    LIMIT 20
-    """)
+SELECT DISTINCT ?member ?memberLabel ?memberBirth ?roleLabel WHERE {{
+  wd:{movie_qid} p:P161 ?castStmt .
+  ?castStmt ps:P161 ?member .
+  OPTIONAL {{ ?member wdt:P569 ?memberBirth }}
+  OPTIONAL {{
+    ?castStmt pq:P453 ?role .
+    ?role rdfs:label ?roleLabel .
+    FILTER(lang(?roleLabel) = "fr" || lang(?roleLabel) = "en")
+  }}
+  SERVICE wikibase:label {{ bd:serviceParam wikibase:language "fr,en". }}
+}}
+LIMIT 20
+""")
 
     cast: dict[str, dict] = {}
     for r in rows:
         m = qid(val(r, "member"))
         if not m:
             continue
+        # setdefault : on n'écrase pas un rôle déjà trouvé pour ce membre
         entry = cast.setdefault(m, {
-            "qid": m,
+            "wikidata_id": m,
             "name": val(r, "memberLabel"),
             "birth_date": val(r, "memberBirth")[:10] if val(r, "memberBirth") else "",
-            "roles": set(),
+            "role": val(r, "roleLabel"),  # chaîne, pas un set
         })
-        if role := val(r, "roleLabel"):
-            entry["roles"].add(role)
+        # Si le rôle était vide et qu'on en trouve un maintenant, on le complète
+        if not entry["role"] and val(r, "roleLabel"):
+            entry["role"] = val(r, "roleLabel")
 
-    return [
-        {**c, "roles": sorted(c["roles"])}
-        for c in cast.values()
-    ]
+    return list(cast.values())
 
 
 # ---------------------------------------------------------------------------
-# 3. Orchestration : acteur → films → détails
+# 3. Orchestration : acteur → films → 1 document par film
 # ---------------------------------------------------------------------------
 
 def collect_data(actor_qids: dict[str, str], max_films: int = 3) -> list[dict]:
-    documents = []
+    """
+    Retourne une liste plate de documents films.
+    Chaque document correspond à UN film (structure attendue par MongoDB).
+    Si deux acteurs partagent un film, le film n'est inséré qu'une seule fois.
+    """
+    # wikidata_id → document film  (pour éviter les doublons)
+    films_by_id: dict[str, dict] = {}
 
     for actor_name, actor_qid in actor_qids.items():
         print(f"\n── {actor_name} ({actor_qid})")
 
-        # Étape A : films primés (requête légère)
-        movie_qids = fetch_awarded_films(actor_qid, max_films)
+        try:
+            movie_qids = fetch_awarded_films(actor_qid, max_films)
+        except Exception as e:
+            print(f"   ✗ Erreur fetch_awarded_films : {e}")
+            continue
+
         print(f"   {len(movie_qids)} film(s) primé(s) : {movie_qids}")
         time.sleep(1)
 
-        films = []
         for mq in movie_qids:
+            # Film déjà traité via un autre acteur → on saute
+            if mq in films_by_id:
+                print(f"   ├─ {mq} déjà traité, ignoré.")
+                continue
+
             print(f"   ├─ {mq} métadonnées…", end=" ", flush=True)
 
-            # Étape B : métadonnées (requête légère)
-            film = fetch_film_metadata(mq)
-            time.sleep(1)
+            try:
+                film = fetch_film_metadata(mq)
+                time.sleep(1)
+                film["cast"] = fetch_film_cast(mq)
+                time.sleep(1)
+            except Exception as e:
+                print(f"\n   ✗ Erreur pour {mq} : {e}")
+                continue
 
-            # Étape C : casting (requête légère)
-            film["cast"] = fetch_film_cast(mq)
-            time.sleep(1)
+            films_by_id[mq] = film
+            print(f"✓ '{film['title']}' ({film['year']})")
 
-            # Sérialisation des sets Python → listes JSON
-            film["release_dates"] = sorted(film["release_dates"])
-            film["genres"] = list(film["genres"].values())
-            film["directors"] = list(film["directors"].values())
+    return list(films_by_id.values())
+# ---------------------------------------------------------------------------
+# 4. constructeur de actors
+# ---------------------------------------------------------------------------
+def build_actor_documents(actor_qids: dict[str, str], film_documents: list[dict]) -> list[dict]:
+    """
+    Construit 1 document par acteur à partir des films déjà collectés.
+    Chaque document contient au minimum : wikidata_id, name, et la liste
+    des films (titre + réalisateur) dans lesquels l'acteur a joué.
+    """
+    actor_docs = []
 
-            films.append(film)
-            print(f"✓ '{film['title']}'")
+    for actor_name, actor_qid in actor_qids.items():
+        # Trouve tous les films où cet acteur apparaît dans le cast
+        actor_films = []
+        for film in film_documents:
+            cast_ids = [member["wikidata_id"] for member in film.get("cast", [])]
+            if actor_qid in cast_ids:
+                actor_films.append({
+                    "wikidata_id": film["wikidata_id"],
+                    "title": film["title"],
+                    "year": film.get("year"),
+                    "director": film.get("director"),  # déjà un dict {wikidata_id, name, birth_date}
+                })
 
-        documents.append({
-            "actor_name": actor_name,
-            "actor_qid": actor_qid,
-            "films": films,
+        actor_docs.append({
+            "wikidata_id": actor_qid,
+            "name": actor_name,
+            "films": actor_films,
         })
 
-    return documents
-
+    return actor_docs
 
 # ---------------------------------------------------------------------------
 # 4. Point d'entrée
 # ---------------------------------------------------------------------------
 
 def main():
-    # ── Modifier cette liste (3 à 5 acteurs) ────────────────────────────────
-    actor_names = [
-        "Tom Hanks",
-        "Meryl Streep",
-        "Leonardo DiCaprio",
-    ]
+    actor_names = ["Tom Cruise", "Brad Pitt", "Johnny Depp", "Will Smith", "Harrison Ford"]
 
-    # 1) Résolution noms → QIDs Wikidata
     actor_qids = resolve_actors(actor_names)
+    film_documents = collect_data(actor_qids, max_films=3)
+    print(f"\n{len(film_documents)} film(s) collecté(s) au total.")
 
-    # 2) Collecte film par film (3 requêtes légères par film)
-    documents = collect_data(actor_qids, max_films=3)
-
-    # 3) Sauvegarde JSON locale
     with open("movies.json", "w", encoding="utf-8") as f:
-        json.dump(documents, f, ensure_ascii=False, indent=2)
-    print("\n✓ movies.json sauvegardé")
+        json.dump(film_documents, f, ensure_ascii=False, indent=2)
+    print("✓ movies.json sauvegardé")
 
-    # 4) Insertion MongoDB
     db = MongoDbConnection()
     db.setUri()
     db.setClient()
     db.setDatabase()
-    db.setCollection(keepMongoCollection=True)
 
-    for doc in documents:
-        db.mongodb_collection.insert_one(doc)
-        print(f"✓ MongoDB ← {doc['actor_name']} ({len(doc['films'])} film(s))")
+    # ── Collection movies ──────────────────────────────────────────────
+    db.setCollection(keepMongoCollection=True)  # utilise COLLECTION_MOVIE_NAME_1
+    for film in film_documents:
+        try:
+            db.mongodb_collection.insert_one(film)
+            print(f"✓ movies ← '{film['title']}' ({film['wikidata_id']})")
+        except Exception as e:
+            print(f"✗ Erreur insertion film '{film.get('title', '?')}' : {e}")
+
+    # ── Collection actors ──────────────────────────────────────────────
+    actor_documents = build_actor_documents(actor_qids, film_documents)
+
+    db.setCollection(
+        keepMongoCollection=True,
+        collection_name=os.getenv("COLLECTION_MOVIE_NAME_2")
+    )
+    for actor in actor_documents:
+        try:
+            db.mongodb_collection.insert_one(actor)
+            print(f"✓ actors ← '{actor['name']}' ({actor['wikidata_id']})")
+        except Exception as e:
+            print(f"✗ Erreur insertion acteur '{actor.get('name', '?')}' : {e}")
 
     db.client.close()
     print("\nTerminé.")

@@ -42,7 +42,7 @@ class MongoDbConnection:
 
 
     def setCollection(self,keepMongoCollection=False, collection_name=None):
-        self.collectionName = os.getenv("COLLECTION_MOVIE_NAME") or collection_name
+        self.collectionName = collection_name or os.getenv("COLLECTION_MOVIE_NAME_1")
         if keepMongoCollection:
             self.mongodb_collection = self.database[self.collectionName]
 
